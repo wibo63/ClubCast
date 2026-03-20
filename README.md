@@ -1,208 +1,169 @@
 # ⚽ ClubCast — News Hub
-### Multi-channel announcement publishing for soccer clubs
-**Version 1.0 · FC Rotterdam · March 2026**
+### Multi-channel aankondigingen voor voetbalclubs
+**Versie 1.0 · FC Rotterdam · 2026**
 
 ---
 
-## What is ClubCast?
+## 🚀 Quick Start (5 minuten)
 
-ClubCast is a browser-based content hub that lets your communications team write an announcement **once** and publish it — automatically adapted by AI — across four channels simultaneously.
+### Stap 1 — Open de app
+Download `index.html` en dubbelklik het bestand. Het opent direct in je browser — geen installatie nodig.
 
-| Channel | How it publishes | Status |
+### Stap 2 — Haal een gratis AI key op
+1. Ga naar [console.groq.com](https://console.groq.com)
+2. Maak een **gratis account** aan — geen creditcard nodig
+3. Klik op **API Keys → Create API Key**
+4. Kopieer de key (begint met `gsk_`)
+
+### Stap 3 — Voer de key in
+1. Open ClubCast → klik **⚙️ Instellingen** (rechtsboven)
+2. Ga naar tabblad **✨ AI Schrijven**
+3. Plak je Groq key in het veld
+4. Klik **Opslaan** → dan **Test verbinding**
+
+### Stap 4 — Schrijf je eerste aankondiging
+1. Klik **✏️ Nieuw bericht**
+2. Kies een type (bijv. *Match* of *Algemeen*)
+3. Vul een koptekst en je bericht in
+4. Klik **✨ Genereer previews**
+5. De AI schrijft automatisch voor Website, Nieuwsbrief, Instagram en Facebook
+6. Klik **🚀 Nu publiceren**
+
+---
+
+## Wat is ClubCast?
+
+ClubCast is een browsergebaseerde content hub waarmee het communicatieteam een aankondiging **één keer schrijft** en deze automatisch — door AI aangepast — naar vier kanalen tegelijk verstuurt.
+
+| Kanaal | Hoe het publiceert | Status |
 |---|---|---|
-| 🌐 Website | Copies article to clipboard → paste into your CMS | ✅ Working |
-| 📧 Newsletter | Sends a real email via EmailJS + Outlook/Office 365 | ✅ Working (setup required) |
-| 📸 Instagram | Copies caption + hashtags to clipboard | ⚙️ Copy only (API coming soon) |
-| 👍 Facebook | Copies post to clipboard | ⚙️ Copy only (API coming soon) |
+| 🌐 Website | Kopieert artikel naar klembord → plakken in je CMS | ✅ Werkt |
+| 📧 Nieuwsbrief | Verstuurt echte e-mail via EmailJS + Outlook/Office 365 | ✅ Werkt (setup vereist) |
+| 📸 Instagram | Kopieert caption + hashtags naar klembord | ⚙️ Kopiëren (API binnenkort) |
+| 👍 Facebook | Kopieert post naar klembord | ⚙️ Kopiëren (API binnenkort) |
 
 ---
 
-## Getting Started
+## AI Schrijven — Groq (gratis)
 
-**Requirements:**
-- A modern browser: Chrome, Edge, Firefox or Safari
-- An internet connection (needed for AI writing and email sending)
-- The file: `clubcast.html`
+ClubCast gebruikt **Groq** met het Llama 3.3 70B model voor het genereren van content. Volledig gratis, geen creditcard nodig.
 
-**To open the app:**
-1. Download `clubcast.html` to your computer
-2. Double-click the file — it opens in your default browser
-3. No login or installation needed
+De AI past je bericht automatisch aan per kanaal:
 
-> ⚠️ Open the file directly in a browser window, not inside a preview pane in email or Teams.
+| Kanaal | Stijl | Lengte |
+|---|---|---|
+| Website | Professioneel nieuwsartikel | ~150 woorden |
+| Nieuwsbrief | Warm, persoonlijk, begint met "Beste supporters" | ~100 woorden |
+| Instagram | Energiek, emoji's, eindigt met 6–8 hashtags | ~80 woorden |
+| Facebook | Conversationeel, nodigt uit tot reacties | ~110 woorden |
+
+### Geen AI? Gebruik handmatige modus
+Ga naar **Instellingen → AI Schrijven** en zet de toggle **Handmatige modus** aan. Je krijgt dan bewerkbare tekstvelden per kanaal — geen API key nodig.
 
 ---
 
-## Creating an Announcement
+## 🔒 Veiligheid & API Keys
 
-Go to **New Post** in the left sidebar.
+**De key staat nooit in het HTML-bestand.** Keys worden opgeslagen in de localStorage van de browser — alleen op jouw computer, nooit in de code.
 
-### Step 1 — Choose Announcement Type
-Pick the category that fits your news:
-
-| Type | Use for |
+| Actie | Veilig? |
 |---|---|
-| 📢 General | Club news that doesn't fit elsewhere |
-| 👤 Player News | Injuries, milestones, contract updates |
-| 🔄 Transfer | Signings, departures, loans |
-| 🎟️ Event | Matches, open days, ticket sales |
-| ⚽ Match | Pre/post-match announcements |
-| 🏟️ Club Update | Infrastructure, management, partnerships |
+| HTML bestand op GitHub publiceren | ✅ Veilig |
+| Key invullen via de Instellingen in de browser | ✅ Veilig |
+| Key hardcoded in de HTML typen | ❌ Nooit doen |
 
-### Step 2 — Write Your Message
-Fill in two fields:
-- **Headline** — a short, clear title (e.g. *New Head Coach Appointed*)
-- **Full message** — write naturally, as if telling a colleague. Include names, dates, and key facts. The AI handles the rest.
-
-### Step 3 — Select Channels
-Toggle the channels you want to publish to. Each shows whether it's fully connected or copy-only.
-
-### Step 4 — Generate & Publish
-1. Click **✨ Generate Previews** — the AI rewrites your message for each channel in seconds
-2. Review the four previews side by side. Each has a **Copy** button if you want to edit manually
-3. Click **🚀 Publish Now** to send to all selected channels at once
+> ⚠️ Gebruik ClubCast niet op een gedeelde computer zonder voorzorgsmaatregelen. Iemand met toegang tot de browser kan een opgeslagen key zien via Developer Tools (F12).
 
 ---
 
-## AI Writing
+## 📧 Nieuwsbrief instellen (Outlook/Office 365)
 
-The AI adapts your message automatically for each channel's format and tone:
+ClubCast verstuurt e-mails via **EmailJS** — gratis tot 200 e-mails per maand, geen server nodig.
 
-| Channel | Style | Length |
-|---|---|---|
-| Website | Professional news article, SEO-friendly | ~150 words |
-| Newsletter | Warm, personal, opens with "Dear supporters" + call to action | ~100 words |
-| Instagram | Energetic, emojis, ends with 6–8 hashtags | ~80 words |
-| Facebook | Conversational, invites engagement | ~110 words |
-
-The AI uses your club name and hashtag from Settings automatically.
-
-You can click **↺ Regenerate** to get a fresh version at any time.
-
----
-
-## Connecting the Newsletter (Outlook / Office 365)
-
-ClubCast sends newsletters via **EmailJS** — a free service that works directly in the browser with no backend or server needed.
-
-**Free plan:** up to 200 emails/month.
-
-### Setup (5 minutes)
-
-**1. Create an EmailJS account**
-Go to [emailjs.com](https://www.emailjs.com) and sign up for free.
-
-**2. Add your Outlook/Office 365 email service**
-- In EmailJS, go to **Email Services** → **Add New Service**
-- Choose **Outlook / Office 365**
-- Sign in with your club's Outlook account
-- Copy the **Service ID** (e.g. `service_xxxxxxx`)
-
-**3. Create an email template**
-- Go to **Email Templates** → **Create New Template**
-- Add these three variables in your template body:
-
+1. Maak een gratis account aan op [emailjs.com](https://www.emailjs.com)
+2. Ga naar **Email Services → Add New Service → Outlook / Office 365**
+3. Log in met het Outlook-account van de club → kopieer de **Service ID**
+4. Ga naar **Email Templates → Create New Template** met deze variabelen:
 ```
-Subject: {{subject}}
+Onderwerp: {{subject}}
 
 {{message}}
 
-Sent by {{club_name}}
+Verstuurd door {{club_name}}
+```
+5. Kopieer de **Template ID** en **Public Key** (Account → General)
+6. Vul alles in via **Instellingen → 📧 Nieuwsbrief**
+7. Klik **Stuur testmail** om te controleren
+
+---
+
+## 🌐 Publiceren op GitHub Pages
+
+Het HTML-bestand bevat geen keys of gevoelige data — je kunt het veilig online zetten.
+
+1. Maak een nieuw **public** repository aan op [github.com](https://github.com)
+2. Hernoem `soccer-club-hub.html` naar **`index.html`**
+3. Upload het bestand: **Add file → Upload files**
+4. Ga naar **Settings → Pages → Deploy from branch → main → Save**
+5. Na ~1 minuut is de app live op:
+```
+https://jouwgebruikersnaam.github.io/jouwrepo/
 ```
 
-- Copy the **Template ID** (e.g. `template_xxxxxxx`)
-
-**4. Copy your Public Key**
-- Go to **Account → General**
-- Copy your **Public Key** (e.g. `user_xxxxxxxxxxxx`)
-
-**5. Enter credentials in ClubCast Settings**
-- Open ClubCast → **Settings** → **Newsletter — EmailJS**
-- Fill in: Public Key, Service ID, Template ID, and the recipient email address
-- Click **Save & Connect**
-- Click **Send Test** to verify everything works
-
-> 💡 The recipient address can be a single address (e.g. your club's mailing list address) or your own address for testing.
+> ℹ️ De AI generatie werkt lokaal (via je eigen browser). Op GitHub Pages kan de Groq API mogelijk worden geblokkeerd door CORS — gebruik dan handmatige modus voor de online demo, of draai de app lokaal voor de volledige AI functionaliteit.
 
 ---
 
-## Settings
+## ⚙️ Instellingen overzicht
 
-All settings are stored in your **browser's local storage** — they persist between sessions and are never sent to any server except the relevant API when publishing.
+Alle instellingen zijn bereikbaar via **⚙️ Instellingen** rechtsboven.
 
-### Club Info
-| Setting | Description |
+| Tabblad | Wat je instelt |
 |---|---|
-| Club Name | Used by the AI in all generated content |
-| Club Hashtag | Automatically added to Instagram posts (e.g. `#FCRotterdam`) |
-| Language | English or Dutch — the AI writes in your chosen language |
+| ✨ AI Schrijven | Groq API key, handmatige modus aan/uit |
+| 🏟️ Club Info | Clubnaam, hashtag, taal, licht/donker modus |
+| 🌐 Website | CMS URL (ter referentie) |
+| 📧 Nieuwsbrief | EmailJS Public Key, Service ID, Template ID, ontvanger |
+| 📸 Instagram | Access Token, Account ID (voor later) |
+| 👍 Facebook | Page Access Token, Page ID (voor later) |
 
-### Channel Credentials
-Each channel has its own settings card. Instagram and Facebook credential fields are ready to fill in when you have your Meta API access — they are saved securely in local storage until needed.
-
----
-
-## Dashboard
-
-The Dashboard gives a live overview of:
-- Total announcements published this session
-- Active channels and their connection status
-- Scheduled and draft posts
-- A table of recent announcements with channel breakdown
+Alle credentials worden opgeslagen in de **localStorage van de browser** — nooit in het bestand zelf.
 
 ---
 
-## Saving Drafts & Scheduling
+## Problemen oplossen
 
-- **Save as Draft** — saves the post without publishing. Find it under **Scheduled** in the sidebar.
-- **Schedule for later** — select a date and time in the Publish Timing field. Scheduled posts appear in the Scheduled view.
+**AI previews genereren niet**
+- Controleer of je Groq API key is ingevuld en begint met `gsk_`
+- Gebruik de **Test verbinding** knop in Instellingen
+- Controleer je internetverbinding
+- Open de browserconsole (F12) voor foutmeldingen
 
-> ⚠️ Scheduled posts in the current version require the app to be open at the scheduled time to publish. A future version will support server-side scheduling.
+**Nieuwsbrief wordt niet verstuurd**
+- Controleer alle vier EmailJS velden in Instellingen → Nieuwsbrief
+- Gebruik **Stuur testmail** om de verbinding te testen
+- Zorg dat je template de variabelen `{{subject}}`, `{{message}}` en `{{club_name}}` bevat
+
+**Instellingen verdwijnen na sluiten browser**
+- Instellingen worden opgeslagen in localStorage
+- Gebruik je een privé/incognito venster? Dan worden gegevens gewist bij sluiten
+- Gebruik een normaal browservenster
+
+**Teksten komen in het Engels**
+- Ga naar **Instellingen → Club Info → Taal** en selecteer *Nederlands*
 
 ---
 
 ## Roadmap
 
-The following features are planned for future releases:
-
-- [ ] Direct Instagram publishing via Meta Graph API
-- [ ] Direct Facebook publishing via Meta Pages API
-- [ ] Server-side scheduling (posts publish even when app is closed)
-- [ ] Multi-user access with approval workflow
-- [ ] Post analytics (open rates, reach)
-- [ ] Template library for recurring post types (match day, transfer window)
-- [ ] Image upload and attachment support
+- [ ] Directe Instagram publicatie via Meta Graph API
+- [ ] Directe Facebook publicatie via Meta Pages API
+- [ ] Server-side scheduling (publiceren zonder app open)
+- [ ] Multi-user toegang met goedkeuringsworkflow
+- [ ] Post analytics (bereik, openingspercentage)
+- [ ] Templatebibliotheek voor terugkerende berichten
+- [ ] Afbeeldingen uploaden en bijvoegen
 
 ---
 
-## Troubleshooting
-
-**AI previews are not generating**
-- Make sure you have filled in both the Headline and Message fields
-- Check that you have an active internet connection
-- Open the browser console (F12) and look for error messages
-
-**Newsletter is not sending**
-- Go to Settings → Newsletter and verify all four fields are filled in
-- Use the **Send Test** button to check the connection
-- Make sure your EmailJS template contains `{{subject}}`, `{{message}}`, and `{{club_name}}`
-- Check your Outlook account is still connected in EmailJS → Email Services
-
-**Content is not copying to clipboard**
-- Make sure the browser has clipboard permission
-- Try clicking the **Copy** button on the individual preview card instead
-
-**Settings are lost after closing the browser**
-- Settings are stored in local storage — make sure you are not using private/incognito mode, which clears storage on close
-
----
-
-## Support
-
-For questions or issues, contact your communications coordinator or the person who set up this tool.
-
-For EmailJS-specific issues: [emailjs.com/docs](https://www.emailjs.com/docs/)
-
----
-
-*ClubCast — built for FC Rotterdam Communications · 2026*
+*ClubCast — gebouwd voor FC Rotterdam Communications · 2026*
